@@ -5,15 +5,18 @@ my_memset:
         push rbp      ;saves the base pointer for the previous function's stack frame
         mov rbp, rsp  ;moves up the base pointer to the top of the stack to create a new frame
 	
-	mov rcx, 0
+	mov rcx, rdi
+	add rcx, rdx
+	mov rcx, [rcx]
+	start:
 	cmp rdx, 0
 	je finish
-	start:  
 	mov [rdi], rsi
 	inc rdi
-	add rcx, 1
-	cmp rcx, rdx
-	jne start
+	dec rdx
+	cmp rdx, 0
+	jnz start
+	mov [rdi], rcx
 	finish: 	
 	
 
@@ -28,20 +31,21 @@ my_strncpy:
         push rbp      ;saves the base pointer for the previous function's stack frame
         mov rbp, rsp  ;moves up the base pointer to the top of the stack to create a new frame
 
-
-        mov rcx, 0
-	cmp rdx, 0
-	je fiin
+	mov rcx, rdi
+	add rcx, rdx
+	mov rcx, [rcx]
 	staart:
+	cmp rdx, 0
+	je fiinish
 	mov r11, [rsi]
 	mov [rdi], r11
-	inc rdi
 	inc rsi
-	add rcx, 1
-	cmp rcx, rdx
-	jne staart
-	fiin:
-
+	inc rdi
+	dec rdx
+	cmp rdx, 0
+	jnz staart
+	fiinish: 
+	mov [rdi], rcx
 
         leave         ;moves down the stack pointer to the current base pointer,
                       ;and restores our saved base pointer, effectively

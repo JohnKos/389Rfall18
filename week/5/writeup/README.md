@@ -16,3 +16,5 @@ Between the two functions the only difference was having to dereference a pointe
 
 Lastly while making I ran into the i386 issue so I had to re download Kali, push my work and then pull it from the new machine.
 
+After running it on the new machine I realized that my string copy failed likely because I was copying to the wrong string. After some refactoring I started to get Hello Hello World!U for str copy and Hello zzzzz for memset. I realized that memset was missing the exclimation point and that was also tied into the problem for string copy. Both my strings did not end correctly because the origninal string was over written. To fix this I just had to grab a value of the exclimation point and then make sure to insert that at the end of the string.
+
