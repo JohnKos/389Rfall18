@@ -1,21 +1,21 @@
 Writeup 8 - Forensics II, Network Analysis and File Carving/Parsing
 =====
 
-Name: *PUT YOUR NAME HERE*
-Section: *PUT YOUR SECTION HERE*
+Name: John Kos
+Section: 0201
 
 I pledge on my honor that I have not given or received anyunauthorized assistance on this assignment or examination.
 
-Digital acknowledgement of honor pledge: *PUT YOUR NAME HERE*
+Digital acknowledgement of honor pledge: John Kos 
 
 ## Assignment 8 Writeup
 
 ### Part 1 (45 Pts)
 1. Open wireshark and see a connection to facebook.com
 
-2. clicking through the info and saw. Frame 22 laz0rh4x22 104.248.224.85. Started clicking through more on No 230. an address is interacting with laz0rh4x from address 206.189.113.189 and the name c0uchpot4doz
+2. clicking through the info and saw. Frame 22 laz0rh4x 104.248.224.85. Started clicking through more on No 230. an address is interacting with laz0rh4x from address 206.189.113.189 and the name c0uchpot4doz
 
-3. who is.
+3. laz0rh4xx is from wilmington deleware and c0uch is from london united kingdom
 
 4. Using port 2749
 
@@ -31,15 +31,20 @@ Digital acknowledgement of honor pledge: *PUT YOUR NAME HERE*
 
 Reading the documentation I saw that the file was 24 byes long. 4 magic, 4 version, 4 timestamp, 8 author and 4 section count. For everything other than author I figured I should use "L" because that was in the sample code and the specs said they were of the same type. I looked at the documentation to get how to deal with string( what the author should be) and saw a char and chose 8 as per specs again. 
 
-I then do the same but for type and length. I don't know if I can open a png without the magic byte or maybe if I just call it a png it will work. The magic byte wasnt in the slides, so I think it might just work cause the magic byte is just to indicate file type anyway. It will be like last week, where I used exiftool to extract the files, I just had to specify what they were. For the array I could just make an array and unpack every value individually and add it to the array. The text I could just handle like author. I could do the same thing for an array of words and doubles as I did with D words. for the touple, I could unpack the two variables and print them. Section reference is just a single word, and ASCII is just more chars. Creating an array and pushing values seems to be creating issues, I am going to just see if I can encode all length at first insteaed.
+I then do the same but for type and length. I don't know if I can open a png without the magic byte or maybe if I just call it a png it will work. The magic byte wasnt in the slides, so I think it might just work cause the magic byte is just to indicate file type anyway. It will be like last week, where I used exiftool to extract the files, I just had to specify what they were. For the array I could just make an array and unpack every value individually and add it to the array. The text I could just handle like author. I could do the same thing for an array of words and doubles as I did with D words. for the touple, I could unpack the two variables and print them. Section reference is just a single word, and ASCII is just more chars. Creating an array and pushing values seems to be creating issues, I am going to just see if I can encode all length at first instead.
 
-Everything is working as intended except png. will try to encode the magic bytes first
+Everything is working as intended except png. will try to encode the magic bytes first. That works, I tried running stuff from forensics I on it and it didnt work but the picture came up with a flag. The last things that are throwing me off is I feel like the text from section 10 looks like it could be encoded and I still don't know what the phone number is. I Ran  section 10 through different base encodings and found it was 64 and got a flag.
 
-1. Generated value was weird int, maybe I had the format wrong.
+Earlier today I went to both the coordinates and didnt find anything but just wanted to add that.
+
+For the phone piazza help linked me the Kars4Kids song, so I think the phone number might be spelling something. I used phonespell.org and one of the options is hackerswin, I think this might be the malformed flag. I thing there might be some other hidden flags maybe using the digits of pi or the lost number or even at the coordinates, but I did not get them.
+
+
+1. Generated value was weird int, maybe I had the format wrong. Used timestamp converter to get Thursday october 25 2018 12:40:07
 
 2. Created by laz0rh4x
 
-3. 9. what does really mean? I ran the algorithm as long as I could and it found 11!
+3. 9? what does really mean? I ran the algorithm as long as I could and it found 11!
 
 4. 
 	1. Text "call this number to get your flag (422) - 537 - 7946"
@@ -73,3 +78,6 @@ Reference 1
 5.
 
 	CMSC389-{PlaIN_dIfF_FLAG}
+	CMSC389R-{c0rn3rst0ne_airlin3s_to_the_m00n}
+	CMSC389R-{h1dd3n-s3ct10n-1n-f1l3}
+	hackerswin

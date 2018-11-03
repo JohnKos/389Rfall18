@@ -62,6 +62,7 @@ while sec < sec_count + 5:
 			print("PNG")
 			filename = "pngsection" + str(sec) + ".png"
 			f = open(filename, 'w')
+			f.write('\x89\x50\x4E\x47\x0D\x0A\x1A\x0A')
 			f.write(data[i:i+length])
 			i = i + length
 		elif typ == 2:
