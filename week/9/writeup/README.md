@@ -14,8 +14,11 @@ Digital acknowledgement of honor pledge: John Kos
 I began by passing all the hashes and words into an array for quick access later. I used a loop to add salt to the word and then compare it to the array of hashes by using the hashlib function passing in sha256 as a parameter. This was not working so I was wondering if the newline character was messing it up, after noticing that was not the issue (by using a function to cut it off) I realized we had to use sha512, so I passed that in a parameter. It still was not working, so then I realized that maybe if I used the shorter way to run the function in the library this might alleviate any issue I may have accidently coded in. After alternating cutting off the new line character on the hashes and the passwords it finally worked when I left in both.
 
 salt: k   word: neptune
-salt: m   word: jordan
+
+salt: m   word: jordan 
+
 salt: p   word: pizza
+
 salt: u   word: loveyou
 
 
